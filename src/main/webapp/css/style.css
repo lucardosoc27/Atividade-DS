@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.tela-centralizada {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* index */
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box input {
+    padding: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-box button {
+    padding: 10px 20px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.login-box button:hover {
+    background-color: #ff6b81;
+}
+
+/* Nota fiscal */
+
+.cupom {
+    background-color: white;
+    border: 2px dashed #333;
+    padding: 30px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cupom h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.cliente-nome {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.divisor {
+    border-top: 1px dashed #ccc;
+    margin-bottom: 15px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.botao-voltar {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #ff4757;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.botao-voltar:hover {
+    background-color: #ff6b81;
+}

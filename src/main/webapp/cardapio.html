@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome do Restaurante &#9679; menu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="Header">
+        <h1 class="logo">Nome do Restaurante</h1>
+        <p class="Slogan">Do nosso fogão direto para o seu coração.</p>
+    </header>
+
+    <main>
+        <form action="PedidoServlet" method="POST">
+            <div class="container">
+                <section id="Burguer">
+                    <h2>Hambúrgueres</h2>
+                    <div class="Catalogo">
+                        <div class="catCard">
+                            <h3 class="catTitulo">X-Salada</h3>
+                            <img src="imgs/x-salada.jpg" class="catImagem" alt="X-Salada">
+                            <p class="Descricao">Pão de hambúrguer, carne, queijo, alface, tomate e a famosa maionese caseira verde.</p>
+                            <p class="preco">Preço: <span>R$ 15,00</span></p>
+                            <button type="submit" name="opcao" value="1" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">X-Bacon</h3>
+                            <img src="images/" class="catImagem" alt="X-Bacon">
+                            <p class="Descricao">O clássico imbatível: Pão de hambúrguer selado na chapa, blend bovino suculento e bacon crocante.</p>
+                            <p class="preco">Preço: <span>R$ 15,00</span></p>
+                            <button type="submit" name="opcao" value="2" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">X-Frango</h3>
+                            <img src="images/" class="catImagem" alt="X-Frango">
+                            <p class="Descricao">Filé de peito de frango grelhado, coberto com queijo muçarela, milho verde e batata palha.</p>
+                            <p class="preco">Preço: <span>R$ 15,00</span></p>
+                            <button type="submit" name="opcao" value="3" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Vegetariano</h3>
+                            <img src="images/" class="catImagem" alt="Vegetariano">
+                            <p class="Descricao">Hambúrguer artesanal de grão-de-bico, queijo muçarela derretido, mix de folhas e molho de ervas.</p>
+                            <p class="preco">Preço: <span>R$ 15,00</span></p>
+                            <button type="submit" name="opcao" value="4" class="Botao">Adicionar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="Pizza">
+                    <h2>Pizzas</h2>
+                    <div class="Catalogo">
+                        <div class="catCard">
+                            <h3 class="catTitulo">Calabresa</h3>
+                            <img src="images/" class="catImagem" alt="Calabresa">
+                            <p class="Descricao">Molho de tomate artesanal, muçarela, fatias de calabresa defumada e cebola roxa.</p>
+                            <p class="preco">Preço: <span>R$ 25,00</span></p>
+                            <button type="submit" name="opcao" value="5" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Frango com Catupiry</h3>
+                            <img src="images/" class="catImagem" alt="Frango com Catupiry">
+                            <p class="Descricao">Peito de frango desfiado temperado, coberto com a camada cremosa do legítimo Catupiry.</p>
+                            <p class="preco">Preço: <span>R$ 25,00</span></p>
+                            <button type="submit" name="opcao" value="6" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Portuguesa</h3>
+                            <img src="images/" class="catImagem" alt="Portuguesa">
+                            <p class="Descricao">Muçarela, presunto cozido, ovos fritos na hora, ervilhas, cebola e um fio de azeite.</p>
+                            <p class="preco">Preço: <span>R$ 25,00</span></p>
+                            <button type="submit" name="opcao" value="7" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Vegetariana</h3>
+                            <img src="images/" class="catImagem" alt="Vegetariana">
+                            <p class="Descricao">Mix de legumes selecionados: milho, ervilha, palmito, cebola roxa e muçarela.</p>
+                            <p class="preco">Preço: <span>R$ 25,00</span></p>
+                            <button type="submit" name="opcao" value="8" class="Botao">Adicionar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="Fritas">
+                    <h2>Batatas Fritas</h2>
+                    <div class="Catalogo">
+                        <div class="catCard">
+                            <h3 class="catTitulo">Tradicional</h3>
+                            <img src="images/" class="catImagem" alt="Tradicional">
+                            <p class="Descricao">Porção clássica, dourada e sequinha.</p>
+                            <p class="preco">Preço: <span>R$ 10,00</span></p>
+                            <button type="submit" name="opcao" value="9" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Batata com Cheddar e Bacon</h3>
+                            <img src="images/" class="catImagem" alt="Batata com Cheddar e Bacon">
+                            <p class="Descricao">Batatas crocantes cobertas com molho cheddar derretido e bacon artesanal crocante.</p>
+                            <p class="preco">Preço: <span>R$ 10,00</span></p>
+                            <button type="submit" name="opcao" value="10" class="Botao">Adicionar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="Bebidas">
+                    <h2>Bebidas (350ml)</h2>
+                    <div class="Catalogo">
+                        <div class="catCard">
+                            <h3 class="catTitulo">Guaraná Antarctica</h3>
+                            <img src="images/" class="catImagem" alt="Guaraná Antarctica">
+                            <p class="Descricao">O sabor original da fruta da Amazônia. A combinação brasileira perfeita.</p>
+                            <p class="preco">Preço: <span>R$ 5,00</span></p>
+                            <button type="submit" name="opcao" value="11" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Coca Cola</h3>
+                            <img src="images/" class="catImagem" alt="Coca Cola">
+                            <p class="Descricao">A refrescância clássica para um prato clássico.</p>
+                            <p class="preco">Preço: <span>R$ 5,00</span></p>
+                            <button type="submit" name="opcao" value="12" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Suco de Laranja</h3>
+                            <img src="images/" class="catImagem" alt="Suco de Laranja">
+                            <p class="Descricao">Suco de laranja 100% integral, sem adição de açúcar ou conservantes.</p>
+                            <p class="preco">Preço: <span>R$ 5,00</span></p>
+                            <button type="submit" name="opcao" value="13" class="Botao">Adicionar</button>
+                        </div>
+
+                        <div class="catCard">
+                            <h3 class="catTitulo">Chá Gelado Mate Leão</h3>
+                            <img src="images/" class="catImagem" alt="Chá Gelado Mate Leão">
+                            <p class="Descricao">Refrescante e leve. Disponível nos sabores Natural ou Limão.</p>
+                            <p class="preco">Preço: <span>R$ 5,00</span></p>
+                            <button type="submit" name="opcao" value="14" class="Botao">Adicionar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="fzrPedido">
+                    <div>
+                        <h3>Tudo pronto por aqui! Que tal escolher o seu agora?</h3>
+                        <a href="PedidoServlet" class="Botao">Finalizar e Ver Total</a>
+                    </div>
+                </section>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="rodape">
+            <p>&copy; 2026 Nome do Restaurante - Todos os direitos reservados.</p>
+            <p>Endereço: Rua dos Sabores, 123 - São Paulo/SP</p>
+            <p>Horário de Funcionamento: Terça a Domingo, 18h às 23h</p>
+        </div>
+    </footer>
+</body>
+
+</html>
