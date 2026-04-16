@@ -80,7 +80,7 @@ public class PedidoServlet extends HttpServlet {
             carrinho = new ArrayList<>();
         }
 
-        // Pega o nome do cliente na sessão (se não tiver, vira "Visitante")
+        // Pega o nome do cliente, e se não tiver, vira Visitante
         String nomeCliente = (String) sessao.getAttribute("nomeDoCliente");
         if (nomeCliente == null) {
             nomeCliente = "Visitante";
@@ -92,9 +92,8 @@ public class PedidoServlet extends HttpServlet {
             total += item.preco();
         }
 
-        // ==========================================
-        // MÁGICA AQUI: Construindo o texto JSON
-        // ==========================================
+        // Constroi a nota fiscal
+        
         StringBuilder json = new StringBuilder();
         json.append("{");
         json.append("\"cliente\": \"").append(nomeCliente).append("\", ");
@@ -108,7 +107,7 @@ public class PedidoServlet extends HttpServlet {
             json.append("\"preco\": ").append(p.preco());
             json.append("}");
             
-            // Adiciona uma vírgula se não for o último item da lista
+            
             if (i < carrinho.size() - 1) {
                 json.append(", ");
             }
@@ -119,11 +118,10 @@ public class PedidoServlet extends HttpServlet {
         // Limpa o carrinho para o proximo cliente
         sessao.removeAttribute("meuCarrinho");
 
-        // Avisa o navegador que estamos mandando um arquivo JSON (Dados) e não um HTML
+        // Avisa o navegador que o arquivo é JSON e não um HTML
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         
-        // Escreve o JSON na resposta
         response.getWriter().write(json.toString());
     }
 }

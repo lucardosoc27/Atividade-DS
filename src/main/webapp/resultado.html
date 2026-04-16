@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cupom Fiscal</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="tela-centralizada">
-    <div class="cupom">
-        <h2>Seu Pedido</h2>
-        
-        <div class="cliente-nome" id="nome-cliente">
-            Cliente: Carregando...
-        </div>
-        
-        <div class="divisor"></div>
-        
-        <div id="lista-itens">
-            <p style="text-align: center;">Buscando o seu pedido no servidor...</p>
-        </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cupom Fiscal</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body class="tela-centralizada">
+        <div class="cupom">
+            <h2>Seu Pedido</h2>
 
-        <div class="total" id="valor-total">
-            Total: R$ 0,00
+            <div class="cliente-nome" id="nome-cliente">
+                Cliente: Carregando...
+            </div>
+
+            <div class="divisor"></div>
+
+            <div id="lista-itens">
+                <p style="text-align: center;">Buscando o seu pedido no servidor...</p>
+            </div>
+
+            <div class="total" id="valor-total">
+                Total: R$ 0,00
+            </div>
+
+            <a href="index.html" class="botao-voltar">Atender Novo Cliente</a>
         </div>
+        <script>
 
-        <a href="index.html" class="botao-voltar">Atender Novo Cliente</a>
-    </div>
+            document.addEventListener('DOMContentLoaded', () => {
 
-    <script>
-        // Espera a página HTML carregar completamente
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // Vai no Servlet usando o método GET (que retorna o JSON)
-            fetch('PedidoServlet')
+        // Vai no servlet usando o metodo GET para retornar o JSON)
+        fetch('PedidoServlet')
                 .then(resposta => resposta.json()) // Transforma o texto do Java em um Objeto JavaScript
                 .then(dados => {
-                    
-                    // 1. Atualiza o nome do cliente
+
+                    // Atualiza o nome do cliente
                     document.getElementById('nome-cliente').innerText = 'Cliente: ' + dados.cliente;
-                    
-                    // 2. Prepara a área dos itens
+
+                    // Prepara a área dos itens
                     const divItens = document.getElementById('lista-itens');
                     divItens.innerHTML = ''; // Apaga a mensagem de "Buscando..."
 
-                    // 3. Verifica se tem itens e desenha na tela
+                    // Verifica se tem itens 
                     if (dados.itens.length === 0) {
                         divItens.innerHTML = '<p style="text-align: center;">Nenhum item selecionado.</p>';
                     } else {
                         dados.itens.forEach(item => {
-                            // Formata o preço para ter duas casas decimais e trocar ponto por vírgula
+                            // Formata o preço para duas casas decimais e trocar ponto por vírgula
                             const precoFormatado = item.preco.toFixed(2).replace('.', ',');
-                            
+
                             // Cria a linha do produto no HTML
                             divItens.innerHTML += `
                                 <div class="item">
@@ -60,16 +59,17 @@
                         });
                     }
 
-                    // 4. Atualiza o valor total formatado
+                    // Atualiza o valor total formatado
                     const totalFormatado = dados.total.toFixed(2).replace('.', ',');
                     document.getElementById('valor-total').innerText = 'Total: R$ ' + totalFormatado;
                 })
                 .catch(erro => {
-                    // Se o servidor cair ou der erro, avisa o usuário
+                    // Avisa de erro caso o servidor caia
                     console.error('Erro na comunicação com o servidor:', erro);
                     document.getElementById('lista-itens').innerHTML = '<p style="text-align: center; color: red;">Erro ao carregar o cupom.</p>';
                 });
-        });
-    </script>
-</body>
+            }
+        );
+        </script>
+    </body>
 </html>
