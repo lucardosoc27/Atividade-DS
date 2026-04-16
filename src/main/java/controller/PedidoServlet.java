@@ -74,10 +74,16 @@ public class PedidoServlet extends HttpServlet {
         
         HttpSession sessao = request.getSession();
         
-       
+        
         ArrayList<Produto> carrinho = (ArrayList<Produto>) sessao.getAttribute("meuCarrinho");
         if (carrinho == null) {
             carrinho = new ArrayList<>();
+        }
+
+        // Pega o nome do cliente na sessão (se não tiver, vira "Visitante")
+        String nomeCliente = (String) sessao.getAttribute("nomeDoCliente");
+        if (nomeCliente == null) {
+            nomeCliente = "Visitante";
         }
 
         // Calcula o total da compra
@@ -86,14 +92,38 @@ public class PedidoServlet extends HttpServlet {
             total += item.preco();
         }
 
-        // Envia o total e a lista dos pedidos para o jsp imprimir na tela
-        request.setAttribute("valorTotal", total);
-        request.setAttribute("listaItens", carrinho);
+        // ==========================================
+        // MÁGICA AQUI: Construindo o texto JSON
+        // ==========================================
+        StringBuilder json = new StringBuilder();
+        json.append("{");
+        json.append("\"cliente\": \"").append(nomeCliente).append("\", ");
+        json.append("\"total\": ").append(total).append(", ");
+        json.append("\"itens\": [");
+        
+        for (int i = 0; i < carrinho.size(); i++) {
+            Produto p = carrinho.get(i);
+            json.append("{");
+            json.append("\"nome\": \"").append(p.nome()).append("\", ");
+            json.append("\"preco\": ").append(p.preco());
+            json.append("}");
+            
+            // Adiciona uma vírgula se não for o último item da lista
+            if (i < carrinho.size() - 1) {
+                json.append(", ");
+            }
+        }
+        json.append("]");
+        json.append("}");
 
         // Limpa o carrinho para o proximo cliente
         sessao.removeAttribute("meuCarrinho");
 
-        // Monta a nota fiscal
-        request.getRequestDispatcher("resultado.jsp").forward(request, response);
+        // Avisa o navegador que estamos mandando um arquivo JSON (Dados) e não um HTML
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        // Escreve o JSON na resposta
+        response.getWriter().write(json.toString());
     }
 }

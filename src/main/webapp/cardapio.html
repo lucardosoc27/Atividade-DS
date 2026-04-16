@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Try, Catch & Eat &#9679; menu</title>
+    <title>Try, Catch & Eat ● Menu</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -151,7 +151,7 @@
 
                 <section id="fzrPedido">
                     <h3>Pronto para dar o commit no seu pedido?</h3>
-                    <a href="PedidoServlet" class="Botao botao-finalizar">Finalizar e Ver Total</a>
+                    <a href="resultado.html" class="Botao botao-finalizar">Finalizar e Ver Total</a>
                 </section>
 
             </div>
@@ -165,19 +165,22 @@
             <p>Horário de Funcionamento: Terça a Domingo, 17h às 23h</p>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Seleciona os botões de adicionar
             const botoesAdicionar = document.querySelectorAll('.catCard button[type="submit"]');
 
             botoesAdicionar.forEach(botao => {
                 botao.addEventListener('click', (evento) => {
+                    // Impede o recarregamento da página e o pulo para o topo
                     evento.preventDefault();
 
                     const valorOpcao = botao.value;
-
                     const dados = new URLSearchParams();
                     dados.append('opcao', valorOpcao);
 
+                    // Feedback visual no botão
                     const textoOriginal = botao.innerText;
                     botao.innerText = 'Adicionado! ✓';
                     botao.style.backgroundColor = '#2a9d8f';
@@ -187,6 +190,7 @@
                         botao.style.backgroundColor = '';
                     }, 2000);
 
+                    // Envia o dado para o Servlet via AJAX (Fetch)
                     fetch('PedidoServlet', {
                         method: 'POST',
                         headers: {
@@ -195,11 +199,11 @@
                         body: dados.toString()
                     })
                     .then(response => {
-                        console.log("Item " + valorOpcao + " processado no servidor.");
+                        console.log("Item " + valorOpcao + " adicionado com sucesso.");
                     })
                     .catch(error => {
-                        console.error('Erro de comunicação com o servidor:', error);
-                        botao.innerText = 'Erro ao adicionar';
+                        console.error('Erro ao adicionar item:', error);
+                        botao.innerText = 'Erro!';
                         botao.style.backgroundColor = '#d62828';
                     });
                 });
