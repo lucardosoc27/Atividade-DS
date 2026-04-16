@@ -20,7 +20,7 @@ public class PedidoServlet extends HttpServlet {
         
         HttpSession sessao = request.getSession();
         
-        @SuppressWarnings("unchecked")
+        
         ArrayList<Produto> carrinho = (ArrayList<Produto>) sessao.getAttribute("meuCarrinho");
         if (carrinho == null) {
             carrinho = new ArrayList<>();
@@ -54,7 +54,7 @@ public class PedidoServlet extends HttpServlet {
             case 9 -> carrinho.add(new Produto("Batata Tradicional", 10.0));
             case 10 -> carrinho.add(new Produto("Batata com Cheddar e Bacon", 10.0));
             
-            // BEBIDAS
+            // Bebida
             case 11 -> carrinho.add(new Produto("Guaraná Antarctica", 5.0));
             case 12 -> carrinho.add(new Produto("Coca Cola", 5.0));
             case 13 -> carrinho.add(new Produto("Suco de Laranja", 5.0));
@@ -74,7 +74,7 @@ public class PedidoServlet extends HttpServlet {
         
         HttpSession sessao = request.getSession();
         
-        @SuppressWarnings("unchecked")
+       
         ArrayList<Produto> carrinho = (ArrayList<Produto>) sessao.getAttribute("meuCarrinho");
         if (carrinho == null) {
             carrinho = new ArrayList<>();
